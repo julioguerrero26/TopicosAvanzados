@@ -2,23 +2,26 @@
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 
-// https://astro.build/config
 export default defineConfig({
 	integrations: [
 		starlight({
-			title: 'My Docs',
-			social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/withastro/starlight' }],
+			title: 'Menu', // Esto ya no se verá por el replacesTitle y el CSS
+			logo: {
+				src: './src/assets/leon.svg',
+				replacesTitle: true,
+			},
+			customCss: [
+				'./src/Styles/custom.css',
+			],
+			social: {
+				github: 'https://github.com/julioguerrero26'
+			},
 			sidebar: [
 				{
-					label: 'Guides',
+					label: 'Cuadernos',
 					items: [
-						// Each item here is one entry in the navigation menu.
-						{ label: 'Example Guide', slug: 'guides/example' },
+						{ label: 'Prueba', link: '/guides/example' }, // Asegúrate de que el link exista
 					],
-				},
-				{
-					label: 'Reference',
-					autogenerate: { directory: 'reference' },
 				},
 			],
 		}),
